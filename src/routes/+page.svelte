@@ -3,7 +3,7 @@
   let menuOpen = false;
   let fabOpen = false;
 
-  const phoneNumber = "+91 9146634563";
+  const phoneNumber = "+91 7218283271";
   // ---------- Quick booking strip (hero) ----------
   let quickType = "With driver";
   let quickPickup = "Pune, Maharashtra";
@@ -427,11 +427,11 @@ const cities = [
   ];
 
   const waLink =
-    "https://wa.me/7218283271?text=Hello%20Shree%20Ram%20Travels%2C%20I%20need%20a%20car%20rental%20quote.";
+    "https://wa.me/9146634563?text=Hello%20Shree%20Ram%20Travels%2C%20I%20need%20a%20car%20rental%20quote.";
   
   
    const waLink1 =
-    "https://wa.me/9146634563?text=Hello%20Shree%20Ram%20Travels%2C%20I%20need%20a%20car%20rental%20quote.";
+    "https://wa.me/7218283271?text=Hello%20Shree%20Ram%20Travels%2C%20I%20need%20a%20car%20rental%20quote.";
  
 </script>
 
