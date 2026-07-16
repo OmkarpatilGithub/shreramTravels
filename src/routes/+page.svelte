@@ -1337,7 +1337,7 @@ const cities = [
           >+91 72182 83271</a
         >
         <a href="tel:+917219882073" class="block text-white/70 my-2.5 text-sm"
-          >+91 +91 9146634563</a
+          >+91 9146634563</a
         >
         <a href="mailto:contact@shreramtravel.com">
           contact@shreramtravel.com
