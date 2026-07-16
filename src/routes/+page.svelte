@@ -428,6 +428,11 @@ const cities = [
 
   const waLink =
     "https://wa.me/7218283271?text=Hello%20Shree%20Ram%20Travels%2C%20I%20need%20a%20car%20rental%20quote.";
+  
+  
+   const waLink1 =
+    "https://wa.me/9146634563?text=Hello%20Shree%20Ram%20Travels%2C%20I%20need%20a%20car%20rental%20quote.";
+ 
 </script>
 
 <main class="font-sans text-ink bg-cream">
@@ -1390,7 +1395,7 @@ const cities = [
 
     <!-- WhatsApp Button -->
     <a
-      href={waLink}
+      href={waLink1}
       target="_blank"
       rel="noopener"
       class="flex items-center gap-3 bg-white rounded-full px-4 py-3 shadow-xl hover:scale-105 transition-all"
