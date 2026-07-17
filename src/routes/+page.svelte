@@ -1340,7 +1340,7 @@ ${quoteRoute}
         >
           <span
             class="w-10 h-10 rounded-full grid place-items-center bg-orange text-white text-sm font-sans"
-            >श्री</span
+            ><img src="/srt.png" alt="logo"></span
           >
           Shree Ram Travels
         </a>
