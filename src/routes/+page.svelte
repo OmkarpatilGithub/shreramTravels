@@ -122,8 +122,8 @@ ${quoteRoute}
       title: "Airport cab",
       desc: "Dedicated pickup and drop service for Pune Airport, Mumbai Airport and railway stations.",
       meta: ["On time", "AC", "Local support"],
-      priceLabel: "from",
-      price: "₹999",
+      priceLabel: "custom",
+      price: "Get quote",
     },
   ];
 
