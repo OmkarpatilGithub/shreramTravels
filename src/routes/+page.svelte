@@ -562,7 +562,7 @@ ${quoteRoute}
           class="w-20 h-20 rounded-full grid place-items-center text-white text-sm font-sans p-4"
           ><img src="/srt.png" alt="logo" /></span
         >
-        <span class="md:text-[#FFDF00]"> Shri Ram Travels </span>
+        <span class="md:text-[#FFDF00] text-[#FFDF00]"> Shri Ram Travels </span>
       </a>
 
       <div
