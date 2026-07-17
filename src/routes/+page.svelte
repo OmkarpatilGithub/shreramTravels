@@ -556,13 +556,13 @@ ${quoteRoute}
     >
       <a
         href="#"
-        class="font-display font-extrabold text-xl flex items-center gap-2.5"
+        class="font-display font-extrabold text-xl flex items-center gap-2.5 bg-black rounded-2xl px-6"
       >
         <span
           class="w-20 h-20 rounded-full grid place-items-center text-white text-sm font-sans p-4"
           ><img src="/srt.png" alt="logo" /></span
         >
-        <span class="md:text-white"> Shri Ram Travels </span>
+        <span class="md:text-[#FFDF00]"> Shri Ram Travels </span>
       </a>
 
       <div
