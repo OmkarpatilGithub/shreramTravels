@@ -2,7 +2,11 @@
   // ---------- Mobile nav ----------
   let menuOpen = false;
   let fabOpen = false;
+  const latitude = 18.4400143;
+  const longitude = 73.8861925;
 
+  const mapEmbed = `https://maps.google.com/maps?q=${latitude},${longitude}&z=17&output=embed`;
+  const mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
   const phoneNumber = "+91 7218283271";
   // ---------- Quick booking strip (hero) ----------
   let quickType = "With driver";
@@ -431,75 +435,100 @@ ${quoteRoute}
   ];
 
   const waLink =
-    "https://wa.me/9146634563?text=Hello%20Shree%20Ram%20Travels%2C%20I%20need%20a%20car%20rental%20quote.";
+    "https://wa.me/9146634563?text=Hello%20Shri%20Ram%20Travels%2C%20I%20need%20a%20car%20rental%20quote.";
 
   const waLink1 =
-    "https://wa.me/7218283271?text=Hello%20Shree%20Ram%20Travels%2C%20I%20need%20a%20car%20rental%20quote.";
+    "https://wa.me/7218283271?text=Hello%20Shri%20Ram%20Travels%2C%20I%20need%20a%20car%20rental%20quote.";
 
-
-
-    const localBusinessSchema = {
+  const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "CarRental",
-    "name": "Shree Ram Travels",
-    "image": "https://www.shreeramtravels.com/imagess.png",
-    "telephone": ["+917218283271", "+919146634563"],
-    "email": "contact@shreramtravel.com",
-    "address": {
+    name: "Shri Ram Travels",
+    image: "https://www.Shriramtravels.com/imagess.png",
+    telephone: ["+917218283271", "+919146634563"],
+    email: "contact@shreramtravel.com",
+    address: {
       "@type": "PostalAddress",
-      "addressLocality": "Pune",
-      "addressRegion": "Maharashtra",
-      "addressCountry": "IN"
+      addressLocality: "Pune",
+      addressRegion: "Maharashtra",
+      addressCountry: "IN",
     },
-    "areaServed": ["Pune", "Mumbai", "Maharashtra", "India"],
-    "priceRange": "₹₹",
-    "openingHoursSpecification": {
+    areaServed: ["Pune", "Mumbai", "Maharashtra", "India"],
+    priceRange: "₹₹",
+    openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-      "opens": "00:00",
-      "closes": "23:59"
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "00:00",
+      closes: "23:59",
     },
-    "aggregateRating": {
+    aggregateRating: {
       "@type": "AggregateRating",
-      "ratingValue": "5",
-      "reviewCount": String(reviews.length)
-    }
+      ratingValue: "5",
+      reviewCount: String(reviews.length),
+    },
   };
 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": faqs.map(f => ({
+    mainEntity: faqs.map((f) => ({
       "@type": "Question",
-      "name": f.q,
-      "acceptedAnswer": { "@type": "Answer", "text": f.a }
-    }))
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
   };
 </script>
+
 <svelte:head>
-  <title>Car Rental in Pune | Cabs with Driver, Airport Transfer & Outstation | Shree Ram Travels</title>
-  <meta name="description" content="Book chauffeur-driven car rentals from Pune for airport transfers, outstation trips (Mumbai, Goa, Shirdi, Mahabaleshwar) and monthly corporate rentals. Transparent fare, 24x7 support." />
-  <link rel="canonical" href="https://www.shreeramtravels.com/" />
+  <title
+    >Car Rental in Pune | Cabs with Driver, Airport Transfer & Outstation |
+    Shri Ram Travels</title
+  >
+  <meta
+    name="description"
+    content="Book chauffeur-driven car rentals from Pune for airport transfers, outstation trips (Mumbai, Goa, Shirdi, Mahabaleshwar) and monthly corporate rentals. Transparent fare, 24x7 support."
+  />
+  <link rel="canonical" href="https://www.Shriramtravels.com/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Car Rental in Pune | Shree Ram Travels" />
-  <meta property="og:description" content="Chauffeur-driven cars from Pune for local, airport and all-India outstation travel. Clear fares, 24x7 support." />
-  <meta property="og:url" content="https://www.shreeramtravels.com/" />
-  <meta property="og:image" content="https://www.shreeramtravels.com/imagess.png" />
+  <meta property="og:title" content="Car Rental in Pune | Shri Ram Travels" />
+  <meta
+    property="og:description"
+    content="Chauffeur-driven cars from Pune for local, airport and all-India outstation travel. Clear fares, 24x7 support."
+  />
+  <meta property="og:url" content="https://www.Shriramtravels.com/" />
+  <meta
+    property="og:image"
+    content="https://www.Shriramtravels.com/imagess.png"
+  />
   <meta property="og:locale" content="en_IN" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Car Rental in Pune | Shree Ram Travels" />
-  <meta name="twitter:description" content="Chauffeur-driven cars from Pune for local, airport and all-India outstation travel." />
-  <meta name="twitter:image" content="https://www.shreeramtravels.com/imagess.png" />
+  <meta name="twitter:title" content="Car Rental in Pune | Shri Ram Travels" />
+  <meta
+    name="twitter:description"
+    content="Chauffeur-driven cars from Pune for local, airport and all-India outstation travel."
+  />
+  <meta
+    name="twitter:image"
+    content="https://www.Shriramtravels.com/imagess.png"
+  />
 
   <!-- Local SEO -->
   <meta name="geo.region" content="IN-MH" />
   <meta name="geo.placename" content="Pune" />
 
-    {@html `<script type="application/ld+json">${JSON.stringify(localBusinessSchema)}</script>`}
+  {@html `<script type="application/ld+json">${JSON.stringify(localBusinessSchema)}</script>`}
   {@html `<script type="application/ld+json">${JSON.stringify(faqSchema)}</script>`}
 </svelte:head>
 <main class="font-sans text-ink bg-cream">
@@ -531,9 +560,9 @@ ${quoteRoute}
       >
         <span
           class="w-30 h-30 rounded-full grid place-items-center text-white text-sm font-sans p-4"
-          ><img src="/srt.png" alt="logo"></span
+          ><img src="/srt.png" alt="logo" /></span
         >
-        <span class="md:text-white"> Shree Ram Travels </span>
+        <span class="md:text-white"> Shri Ram Travels </span>
       </a>
 
       <div
@@ -591,7 +620,7 @@ ${quoteRoute}
           >
         </h1>
         <p class="text-lg text-white/85 max-w-[610px] mb-7">
-          Book chauffeur-driven vehicles from Shree Ram Travels for Pune local
+          Book chauffeur-driven vehicles from Shri Ram Travels for Pune local
           travel, airport transfers, outstation routes, one-way drops and
           monthly business use across India.
         </p>
@@ -711,7 +740,7 @@ ${quoteRoute}
           <div
             class="text-xs font-extrabold tracking-[.14em] uppercase text-teal"
           >
-            About Shree Ram Travels
+            About Shri Ram Travels
           </div>
           <h2
             class="font-display tracking-[-.045em] text-[clamp(1.8rem,4.5vw,3.65rem)] leading-tight mt-2"
@@ -719,7 +748,7 @@ ${quoteRoute}
             Pune-based car rental service with an all-India mindset.
           </h2>
           <p class="text-muted mt-4">
-            Shree Ram Travels is built for people who need a dependable vehicle
+            Shri Ram Travels is built for people who need a dependable vehicle
             without confusion: families planning outstation travel,
             professionals moving between cities, visitors landing at Pune or
             Mumbai airport.
@@ -789,7 +818,7 @@ ${quoteRoute}
               <img
                 src={city.image}
                 alt={city.name}
-                class='h-72 w-full object-cover transition duration-500 group-hover:scale-110 loading="lazy"'
+                class="h-72 w-full object-cover transition duration-500 group-hover:scale-110 "
               />
 
               <div
@@ -900,9 +929,7 @@ ${quoteRoute}
             class="group overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
           >
             <!-- Image -->
-            <div
-              class="relative h-64 overflow-hidden "
-            >
+            <div class="relative h-64 overflow-hidden">
               <!-- Badge -->
               <span
                 class="absolute top-4 left-4 z-10 rounded-full bg-white/95 px-4 py-2 text-xs font-bold uppercase tracking-wide text-gray-700 shadow"
@@ -1269,7 +1296,7 @@ ${quoteRoute}
         <div
           class="relative text-xs font-extrabold tracking-[.14em] uppercase text-[#a7f1d0]"
         >
-          The Shree Ram promise
+          The Shri Ram promise
         </div>
         <div
           class="relative font-display text-5xl md:text-6xl font-extrabold mt-2"
@@ -1296,26 +1323,27 @@ ${quoteRoute}
         >
           Practical rental support, not just a booking form.
         </h2>
-     
-       <div class="grid gap-6 mt-8 p-5 bg-gray-200 border rounded-3xl">
-  {#each whyItems as item}
-    <div class="grid grid-cols-[56px_1fr] gap-4 items-start">
-      <div
-        class="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-teal-600"
-      >
-        <div
-          class="w-7 h-7 [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current">
-          {@html item.icon}
-        </div>
-      </div>
 
-      <div>
-        <h3 class="text-xl font-display">{item.title}</h3>
-        <p class="mt-2 text-muted text-sm leading-6">{item.text}</p>
-      </div>
-    </div>
-  {/each}
-</div>
+        <div class="grid gap-6 mt-8 p-5 bg-gray-200 border rounded-3xl">
+          {#each whyItems as item}
+            <div class="grid grid-cols-[56px_1fr] gap-4 items-start">
+              <div
+                class="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-teal-600"
+              >
+                <div
+                  class="w-7 h-7 [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current"
+                >
+                  {@html item.icon}
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-display">{item.title}</h3>
+                <p class="mt-2 text-muted text-sm leading-6">{item.text}</p>
+              </div>
+            </div>
+          {/each}
+        </div>
       </div>
     </div>
   </section>
@@ -1398,6 +1426,7 @@ ${quoteRoute}
     <div
       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10"
     >
+      <!-- Company -->
       <div>
         <a
           href="#"
@@ -1405,74 +1434,178 @@ ${quoteRoute}
         >
           <span
             class="w-10 h-10 rounded-full grid place-items-center bg-orange text-white text-sm font-sans"
-            ><img src="/srt.png" alt="logo"></span
           >
-          Shree Ram Travels
-        </a>
-        <p class="text-white/60 max-w-[340px] mt-4">
-          Car rentals services based in Pune, Maharashtra, serving routes across
-          India.
-        </p>
-        <p class="text-sm text-white/60 mt-2">Office: Pune, Maharashtra</p>
-      </div>
-      <div>
-        <h4 class="font-display mb-4">Services</h4>
-        <!-- <a href="#self-drive" class="block text-white/70 my-2.5 text-sm"
-          >Self-drive cars</a
-        > -->
-        <a href="#fleet" class="block text-white/70 my-2.5 text-sm"
-          >Car with driver</a
-        >
-        <a href="#services" class="block text-white/70 my-2.5 text-sm"
-          >Airport transfers</a
-        >
-        <a href="#services" class="block text-white/70 my-2.5 text-sm"
-          >Monthly rentals</a
-        >
-      </div>
-      <div>
-        <h4 class="font-display mb-4">Popular routes</h4>
-        <a href="#routes" class="block text-white/70 my-2.5 text-sm"
-          >Pune to Mumbai</a
-        >
-        <a href="#routes" class="block text-white/70 my-2.5 text-sm"
-          >Pune to Goa</a
-        >
-        <a href="#routes" class="block text-white/70 my-2.5 text-sm"
-          >Pune to Shirdi</a
-        >
-        <a href="#routes" class="block text-white/70 my-2.5 text-sm"
-          >All India rentals</a
-        >
-      </div>
-      <div>
-        <h4 class="font-display mb-4">Contact</h4>
-        <a href="tel:+917218283271" class="block text-white/70 my-2.5 text-sm"
-          >+91 72182 83271</a
-        >
-        <a href="tel:+917219882073" class="block text-white/70 my-2.5 text-sm"
-          >+91 9146634563</a
-        >
-        <a href="mailto:contact@shreramtravel.com">
-          contact@shreramtravel.com
+            <img src="/srt.png" alt="Shri Ram Travels Logo" />
+          </span>
+          Shri Ram Travels
         </a>
 
-        <a href="mailto:shreramtravels@gmail.com"> shreramtravels@gmail.com </a>
+        <!-- <p class="text-white/60 max-w-[340px] mt-4">
+          Car rental services based in Pune, Maharashtra, serving local,
+          outstation, airport transfers, and routes across India.
+        </p>
+
+        <p class="text-sm text-white/60 mt-2">📍 Office: Pune, Maharashtra</p> -->
+
+        <!-- Google Map -->
+        <div
+          class="mt-5 overflow-hidden rounded-xl border border-white/10 shadow-lg"
+        >
+          <iframe
+            title="Shri Ram Travels Location"
+            src={mapEmbed}
+            width="100%"
+            height="220"
+            style="border:0;"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+          >
+          </iframe>
+        </div>
+
+        <a
+          href={mapsLink}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 mt-3 text-orange-300 hover:text-orange-200 text-sm font-medium transition-colors"
+        >
+          📍 Visit Our Office
+        </a>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h4 class="font-display mb-4 text-lg">Services</h4>
+
+        <a
+          href="#fleet"
+          class="block text-white/70 hover:text-white my-2.5 text-sm transition"
+        >
+          Car with Driver
+        </a>
+
+        <a
+          href="#services"
+          class="block text-white/70 hover:text-white my-2.5 text-sm transition"
+        >
+          Airport Transfers
+        </a>
+
+        <a
+          href="#services"
+          class="block text-white/70 hover:text-white my-2.5 text-sm transition"
+        >
+          Monthly Rentals
+        </a>
+
+        <a
+          href="#services"
+          class="block text-white/70 hover:text-white my-2.5 text-sm transition"
+        >
+          Corporate Car Rental
+        </a>
+
+        <a
+          href="#services"
+          class="block text-white/70 hover:text-white my-2.5 text-sm transition"
+        >
+          Wedding & Event Cars
+        </a>
+      </div>
+
+      <!-- Popular Routes -->
+      <div>
+        <h4 class="font-display mb-4 text-lg">Popular Routes</h4>
+
+        <a
+          href="#routes"
+          class="block text-white/70 hover:text-white my-2.5 text-sm transition"
+        >
+          Pune → Mumbai
+        </a>
+
+        <a
+          href="#routes"
+          class="block text-white/70 hover:text-white my-2.5 text-sm transition"
+        >
+          Pune → Goa
+        </a>
+
+        <a
+          href="#routes"
+          class="block text-white/70 hover:text-white my-2.5 text-sm transition"
+        >
+          Pune → Shirdi
+        </a>
+
+        <a
+          href="#routes"
+          class="block text-white/70 hover:text-white my-2.5 text-sm transition"
+        >
+          Pune → Nashik
+        </a>
+
+        <a
+          href="#routes"
+          class="block text-white/70 hover:text-white my-2.5 text-sm transition"
+        >
+          All India Rentals
+        </a>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="font-display mb-4 text-lg">Contact</h4>
+
+        <a
+          href="tel:+917218283271"
+          class="block text-white/70 hover:text-white my-2.5 text-sm transition"
+        >
+          📞 +91 72182 83271
+        </a>
+
+        <a
+          href="tel:+919146634563"
+          class="block text-white/70 hover:text-white my-2.5 text-sm transition"
+        >
+          📞 +91 91466 34563
+        </a>
+
+        <a
+          href="mailto:contact@shreramtravel.com"
+          class="block text-white/70 hover:text-white my-2.5 text-sm transition"
+        >
+          ✉️ contact@shreramtravel.com
+        </a>
+
+        <a
+          href="mailto:shreramtravels@gmail.com"
+          class="block text-white/70 hover:text-white my-2.5 text-sm transition"
+        >
+          ✉️ shreramtravels@gmail.com
+        </a>
+
         <a
           href={waLink}
           target="_blank"
           rel="noopener"
-          class="block text-white/70 my-2.5 text-sm">WhatsApp booking</a
+          class="block text-green-400 hover:text-green-300 my-2.5 text-sm font-medium transition"
         >
+          💬 WhatsApp Booking
+        </a>
       </div>
     </div>
+
     <div
       class="border-t border-white/10 mt-12 pt-5 flex flex-col sm:flex-row justify-between gap-4 text-white/45 text-sm"
     >
-      <span>© 2026 Shree Ram Travels, Pune.</span>
-      <span
-        >Clean cars · Chauffeur-driven rentals · All-India outstation service</span
-      >
+      <span>© 2026 Shri Ram Travels, Pune. All Rights Reserved.</span>
+
+      <span>
+        Clean Cars • Chauffeur-driven Rentals • Airport Transfers • All-India
+        Outstation Service
+      </span>
     </div>
   </div>
 </footer>
@@ -1482,7 +1615,7 @@ ${quoteRoute}
   href={waLink}
   target="_blank"
   rel="noopener"
-  aria-label="Chat with Shree Ram Travels on WhatsApp"
+  aria-label="Chat with Shri Ram Travels on WhatsApp"
   class="fixed right-5 bottom-5 z-40 w-14 h-14 rounded-full bg-[#25d366] text-white grid place-items-center text-2xl shadow-[0_12px_28px_rgba(0,0,0,.22)]"
 >
   ☎
