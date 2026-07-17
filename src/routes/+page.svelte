@@ -27,9 +27,31 @@
     quoteRoute = `${quickPickup} - ${quickDrop}`;
     document.getElementById("quote")?.scrollIntoView({ behavior: "smooth" });
   }
+  function handleQuoteSubmit(event) {
+    event.preventDefault();
 
-  function handleQuoteSubmit(e) {
-    e.preventDefault();
+    const whatsappNumber = "917218283271"; // Country code + number (no +, spaces)
+
+    const message = `
+🚗 *New Booking Request*
+
+👤 Name: ${quoteName}
+📞 Mobile: ${quotePhone}
+
+🚘 Rental Type: ${quoteType}
+🚙 Car Category: ${quoteCar}
+
+📅 Pickup Date: ${quoteDate}
+📅 Return Date: ${quoteReturnDate || "Not specified"}
+
+📍 Route / Usage:
+${quoteRoute}
+`;
+
+    const url = `https://wa.me/9146634563?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+
     submitted = true;
   }
 
@@ -46,17 +68,17 @@
     {
       types: ["self", "driver"],
       badge: "Budget friendly",
-      emoji: "🚙",
+      emoji: "/hatchback.png",
       title: "Hatchback",
       desc: "Swift, i20 or similar. Best for city use and short self-drive plans.",
       meta: ["4 seats", "AC", "Self-drive"],
-      priceLabel: "from",
-      price: "₹1,899/day",
+      priceLabel: "Custom",
+      price: "Get Quote",
     },
     {
       types: ["self", "driver"],
       badge: "Most popular",
-      emoji: "🚘",
+      emoji: "/sedan.png",
       title: "Sedan",
       desc: "Dzire, Aura or similar. Comfortable for Pune-Mumbai, Mahabaleshwar and business trips.",
       meta: ["4 seats", "Large boot", "Driver option"],
@@ -66,27 +88,27 @@
     {
       types: ["self", "driver"],
       badge: "Family choice",
-      emoji: "🚐",
+      emoji: "/suv.png",
       title: "SUV / MUV",
       desc: "Ertiga, Innova or similar. Ideal for family trips, luggage and long highway drives.",
       meta: ["6-7 seats", "AC", "Outstation"],
       priceLabel: "from",
-      price: "₹17/km",
+      price: "₹16/km",
     },
-    {
-      types: ["group", "driver"],
-      badge: "Group travel",
-      emoji: "🚌",
-      title: "Tempo Traveller",
-      desc: "12 to 17 seater vehicles for office outings, weddings, pilgrimage and group tours.",
-      meta: ["12-17 seats", "Driver", "Luggage space"],
-      priceLabel: "from",
-      price: "₹24/km",
-    },
+    // {
+    //   types: ["group", "driver"],
+    //   badge: "Group travel",
+    //   emoji: "🚌",
+    //   title: "Tempo Traveller",
+    //   desc: "12 to 17 seater vehicles for office outings, weddings, pilgrimage and group tours.",
+    //   meta: ["12-17 seats", "Driver", "Luggage space"],
+    //   priceLabel: "from",
+    //   price: "₹24/km",
+    // },
     {
       types: ["self", "driver"],
       badge: "Premium",
-      emoji: "🏎️",
+      emoji: "/premium.png",
       title: "Luxury cars",
       desc: "Premium sedans and SUVs for weddings, VIP movement, corporate guests and special days.",
       meta: ["Premium", "On request", "Driver option"],
@@ -96,7 +118,7 @@
     {
       types: ["driver"],
       badge: "Airport ready",
-      emoji: "🚕",
+      emoji: "/airportCar.png",
       title: "Airport cab",
       desc: "Dedicated pickup and drop service for Pune Airport, Mumbai Airport and railway stations.",
       meta: ["On time", "AC", "Local support"],
@@ -174,152 +196,134 @@
     },
   ];
 
-const routeGroups = [
-  {
-    state: "Maharashtra",
-    routes: [
-      "Pune → Mumbai",
-      "Pune → Nashik",
-      "Pune → Shirdi",
-      "Pune → Kolhapur",
-      "Pune → Ratnagiri",
-      "Pune → Ganpatipule",
-      "Pune → Mahabaleshwar",
-      "Pune → Lonavala",
-    ]
-  },
-  {
-    state: "Goa",
-    routes: [
-      "Pune → Panaji",
-      "Pune → Calangute",
-      "Pune → Baga",
-      "Pune → Candolim",
-      "Pune → Vasco da Gama"
-    ]
-  },
-  {
-    state: "Karnataka",
-    routes: [
-      "Pune → Bengaluru",
-      "Pune → Mysuru",
-      "Pune → Hubballi",
-      "Pune → Belagavi",
-      "Pune → Hampi"
-    ]
-  },
-  {
-    state: "Gujarat",
-    routes: [
-      "Pune → Ahmedabad",
-      "Pune → Surat",
-      "Pune → Vadodara",
-      "Pune → Rajkot",
-      "Pune → Dwarka"
-    ]
-  },
-  {
-    state: "Madhya Pradesh",
-    routes: [
-      "Pune → Indore",
-      "Pune → Bhopal",
-      "Pune → Ujjain",
-      "Pune → Gwalior"
-    ]
-  },
-  {
-    state: "Rajasthan",
-    routes: [
-      "Pune → Jaipur",
-      "Pune → Udaipur",
-      "Pune → Jodhpur",
-      "Pune → Mount Abu"
-    ]
-  },
-  {
-    state: "Delhi",
-    routes: [
-      "Pune → New Delhi",
-      "Pune → Gurugram",
-      "Pune → Noida"
-    ]
-  },
-  {
-    state: "Uttar Pradesh",
-    routes: [
-      "Pune → Agra",
-      "Pune → Varanasi",
-      "Pune → Lucknow",
-      "Pune → Prayagraj"
-    ]
-  },
-  {
-    state: "Uttarakhand",
-    routes: [
-      "Pune → Dehradun",
-      "Pune → Haridwar",
-      "Pune → Rishikesh",
-      "Pune → Nainital"
-    ]
-  },
-  {
-    state: "Himachal Pradesh",
-    routes: [
-      "Pune → Shimla",
-      "Pune → Manali",
-      "Pune → Dharamshala"
-    ]
-  },
-  {
-    state: "Jammu & Kashmir",
-    routes: [
-      "Pune → Srinagar",
-      "Pune → Gulmarg",
-      "Pune → Jammu"
-    ]
-  },
-  {
-    state: "Tamil Nadu",
-    routes: [
-      "Pune → Chennai",
-      "Pune → Coimbatore",
-      "Pune → Madurai",
-      "Pune → Ooty"
-    ]
-  },
-  {
-    state: "Kerala",
-    routes: [
-      "Pune → Kochi",
-      "Pune → Munnar",
-      "Pune → Alleppey",
-      "Pune → Thiruvananthapuram"
-    ]
-  },
-  {
-    state: "Andhra Pradesh",
-    routes: [
-      "Pune → Tirupati",
-      "Pune → Visakhapatnam",
-      "Pune → Vijayawada"
-    ]
-  },
-  {
-    state: "Telangana",
-    routes: [
-      "Pune → Hyderabad",
-      "Pune → Warangal"
-    ]
-  }
-]; 
-const cities = [
+  const routeGroups = [
+    {
+      state: "Maharashtra",
+      routes: [
+        "Pune → Mumbai",
+        "Pune → Nashik",
+        "Pune → Shirdi",
+        "Pune → Kolhapur",
+        "Pune → Ratnagiri",
+        "Pune → Ganpatipule",
+        "Pune → Mahabaleshwar",
+        "Pune → Lonavala",
+      ],
+    },
+    {
+      state: "Goa",
+      routes: [
+        "Pune → Panaji",
+        "Pune → Calangute",
+        "Pune → Baga",
+        "Pune → Candolim",
+        "Pune → Vasco da Gama",
+      ],
+    },
+    {
+      state: "Karnataka",
+      routes: [
+        "Pune → Bengaluru",
+        "Pune → Mysuru",
+        "Pune → Hubballi",
+        "Pune → Belagavi",
+        "Pune → Hampi",
+      ],
+    },
+    {
+      state: "Gujarat",
+      routes: [
+        "Pune → Ahmedabad",
+        "Pune → Surat",
+        "Pune → Vadodara",
+        "Pune → Rajkot",
+        "Pune → Dwarka",
+      ],
+    },
+    {
+      state: "Madhya Pradesh",
+      routes: [
+        "Pune → Indore",
+        "Pune → Bhopal",
+        "Pune → Ujjain",
+        "Pune → Gwalior",
+      ],
+    },
+    {
+      state: "Rajasthan",
+      routes: [
+        "Pune → Jaipur",
+        "Pune → Udaipur",
+        "Pune → Jodhpur",
+        "Pune → Mount Abu",
+      ],
+    },
+    {
+      state: "Delhi",
+      routes: ["Pune → New Delhi", "Pune → Gurugram", "Pune → Noida"],
+    },
+    {
+      state: "Uttar Pradesh",
+      routes: [
+        "Pune → Agra",
+        "Pune → Varanasi",
+        "Pune → Lucknow",
+        "Pune → Prayagraj",
+      ],
+    },
+    {
+      state: "Uttarakhand",
+      routes: [
+        "Pune → Dehradun",
+        "Pune → Haridwar",
+        "Pune → Rishikesh",
+        "Pune → Nainital",
+      ],
+    },
+    {
+      state: "Himachal Pradesh",
+      routes: ["Pune → Shimla", "Pune → Manali", "Pune → Dharamshala"],
+    },
+    {
+      state: "Jammu & Kashmir",
+      routes: ["Pune → Srinagar", "Pune → Gulmarg", "Pune → Jammu"],
+    },
+    {
+      state: "Tamil Nadu",
+      routes: [
+        "Pune → Chennai",
+        "Pune → Coimbatore",
+        "Pune → Madurai",
+        "Pune → Ooty",
+      ],
+    },
+    {
+      state: "Kerala",
+      routes: [
+        "Pune → Kochi",
+        "Pune → Munnar",
+        "Pune → Alleppey",
+        "Pune → Thiruvananthapuram",
+      ],
+    },
+    {
+      state: "Andhra Pradesh",
+      routes: ["Pune → Tirupati", "Pune → Visakhapatnam", "Pune → Vijayawada"],
+    },
+    {
+      state: "Telangana",
+      routes: ["Pune → Hyderabad", "Pune → Warangal"],
+    },
+  ];
+  const cities = [
     { name: "Pune", image: "/pune.png" },
     { name: "Mumbai", image: "/mumbai.png" },
     { name: "Goa", image: "/goa.png" },
     { name: "Nashik", image: "/nashik.png" },
-    { name: "Shirdi", image: "/shirdi.png" },
-    { name: "Lonavala", image: "/lonavala.png" }
-]; 
+    { name: "Lonavala", image: "/lonavala.png" },
+    { name: "Airport", image: "/airport.png" },
+    // { name: "", image: "/lonavala.png" },
+  ];
 
   const steps = [
     {
@@ -362,17 +366,17 @@ const cities = [
 
   const whyItems = [
     {
-      icon: "✓",
+      icon: `<svg fill="currentColor" viewBox="0 0 24 24" version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M11 20c-.801 0-1.555-.312-2.121-.879l-4-4c-.567-.566-.879-1.32-.879-2.121s.312-1.555.879-2.122c1.133-1.133 3.109-1.133 4.242 0l1.188 1.188 3.069-5.523c.526-.952 1.533-1.544 2.624-1.544.507 0 1.012.131 1.456.378.7.39 1.206 1.028 1.427 1.798.221.771.127 1.581-.263 2.282l-5 9c-.454.818-1.279 1.384-2.206 1.514-.139.019-.277.029-.416.029zm-4-8c-.268 0-.518.104-.707.293s-.293.439-.293.707.104.518.293.707l4 4c.223.221.523.33.844.283.312-.043.586-.232.737-.504l5-9c.13-.233.161-.503.088-.76-.073-.257-.243-.47-.478-.6-.473-.264-1.101-.078-1.357.388l-4.357 7.841-3.062-3.062c-.19-.189-.44-.293-.708-.293z"></path></g></svg>`,
       title: "Vehicle options for every use",
       text: "Driver cars, airport cabs, SUVs, tempo travellers and premium cars from one provider.",
     },
     {
-      icon: "₹",
+      icon: `<svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12.9494914,6 C13.4853936,6.52514205 13.8531598,7.2212202 13.9645556,8 L17.5,8 C17.7761424,8 18,8.22385763 18,8.5 C18,8.77614237 17.7761424,9 17.5,9 L13.9645556,9 C13.7219407,10.6961471 12.263236,12 10.5,12 L7.70710678,12 L13.8535534,18.1464466 C14.0488155,18.3417088 14.0488155,18.6582912 13.8535534,18.8535534 C13.6582912,19.0488155 13.3417088,19.0488155 13.1464466,18.8535534 L6.14644661,11.8535534 C5.83146418,11.538571 6.05454757,11 6.5,11 L10.5,11 C11.709479,11 12.7183558,10.1411202 12.9499909,9 L6.5,9 C6.22385763,9 6,8.77614237 6,8.5 C6,8.22385763 6.22385763,8 6.5,8 L12.9499909,8 C12.7183558,6.85887984 11.709479,6 10.5,6 L6.5,6 C6.22385763,6 6,5.77614237 6,5.5 C6,5.22385763 6.22385763,5 6.5,5 L10.5,5 L17.5,5 C17.7761424,5 18,5.22385763 18,5.5 C18,5.77614237 17.7761424,6 17.5,6 L12.9494914,6 L12.9494914,6 Z"></path> </g></svg>`,
       title: "Transparent quotes",
       text: "We explain per-km charges, day limits, toll/parking, driver allowance and deposit terms clearly.",
     },
     {
-      icon: "☎",
+      icon: `<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16.5562 12.9062L16.1007 13.359C16.1007 13.359 15.0181 14.4355 12.0631 11.4972C9.10812 8.55901 10.1907 7.48257 10.1907 7.48257L10.4775 7.19738C11.1841 6.49484 11.2507 5.36691 10.6342 4.54348L9.37326 2.85908C8.61028 1.83992 7.13596 1.70529 6.26145 2.57483L4.69185 4.13552C4.25823 4.56668 3.96765 5.12559 4.00289 5.74561C4.09304 7.33182 4.81071 10.7447 8.81536 14.7266C13.0621 18.9492 17.0468 19.117 18.6763 18.9651C19.1917 18.9171 19.6399 18.6546 20.0011 18.2954L21.4217 16.883C22.3806 15.9295 22.1102 14.2949 20.8833 13.628L18.9728 12.5894C18.1672 12.1515 17.1858 12.2801 16.5562 12.9062Z" fill="currentColor"></path> </g></svg>`,
       title: "Direct owner-style contact",
       text: "Call or WhatsApp the Pune team directly instead of waiting for a generic marketplace response.",
     },
@@ -428,16 +432,14 @@ const cities = [
 
   const waLink =
     "https://wa.me/9146634563?text=Hello%20Shree%20Ram%20Travels%2C%20I%20need%20a%20car%20rental%20quote.";
-  
-  
-   const waLink1 =
+
+  const waLink1 =
     "https://wa.me/7218283271?text=Hello%20Shree%20Ram%20Travels%2C%20I%20need%20a%20car%20rental%20quote.";
- 
 </script>
 
 <main class="font-sans text-ink bg-cream">
   <!-- Topbar -->
-  <div class="bg-black text-white text-sm py-2">
+  <div class="bg-[#eef7f3] text-black text-sm py-2">
     <div
       class="w-[min(1180px,calc(100%-40px))] mx-auto flex flex-wrap justify-center gap-7"
     >
@@ -453,21 +455,20 @@ const cities = [
 
   <!-- Header / Nav -->
   <header
-    class="relative md:absolute left-0 top-0 md:top-9 w-full z-20 bg-transparent text-black border-b border-white/20 " 
+    class="relative md:absolute left-0 top-0 md:top-9 w-full z-20 bg-transparent text-black border-b border-white/20"
   >
     <nav
       class="w-[min(1180px,calc(100%-40px))] mx-auto h-[82px] flex items-center justify-between"
     >
       <a
         href="#"
-        class="font-display font-extrabold text-xl  flex items-center gap-2.5"
+        class="font-display font-extrabold text-xl flex items-center gap-2.5"
       >
         <span
-          class="w-10 h-10 rounded-full grid place-items-center bg-orange-400 text-white text-sm font-sans"
-          >श्री</span
+          class="w-30 h-30 rounded-full grid place-items-center text-white text-sm font-sans p-4"
+          ><img src="/srt.png" alt="logo"></span
         >
-        <span class="md:text-white">        Shree Ram Travels </span>
-
+        <span class="md:text-white"> Shree Ram Travels </span>
       </a>
 
       <div
@@ -476,7 +477,7 @@ const cities = [
         <a href="#about" class="py-2 md:py-0">About</a>
         <a href="#services" class="py-2 md:py-0">Services</a>
         <a href="#fleet" class="py-2 md:py-0">Fleet</a>
-       
+
         <a href="#process" class="py-2 md:py-0">Process</a>
         <a href="#routes" class="py-2 md:py-0">Routes</a>
         <a href="#faq" class="py-2 md:py-0">FAQ</a>
@@ -525,9 +526,9 @@ const cities = [
           >
         </h1>
         <p class="text-lg text-white/85 max-w-[610px] mb-7">
-          Book chauffeur-driven vehicles from Shree Ram
-          Travels for Pune local travel, airport transfers, outstation routes,
-          one-way drops and monthly business use across India.
+          Book chauffeur-driven vehicles from Shree Ram Travels for Pune local
+          travel, airport transfers, outstation routes, one-way drops and
+          monthly business use across India.
         </p>
         <div class="flex gap-3 flex-wrap">
           <a
@@ -558,7 +559,7 @@ const cities = [
     </div>
   </section>
 
-  <div class="w-[min(1180px,calc(100%-40px))] mt-10 mx-auto ">
+  <div class="w-[min(1180px,calc(100%-40px))] mt-10 mx-auto">
     <!-- Metric row -->
     <div
       class="relative z-10 mt-6 bg-white rounded-3xl p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1fr_1fr_1fr_auto] gap-2 border shadow-brand"
@@ -707,37 +708,39 @@ const cities = [
       </div>
     </div>
   </section>
-<section>
-     <article class="bg-white rounded-3xl p-7 border border-line">
-           <div class="w-[min(1180px,calc(100%-40px))] mx-auto">
+  <section>
+    <article class="bg-white rounded-3xl p-7 border border-line">
+      <div class="w-[min(1180px,calc(100%-40px))] mx-auto">
         <div class="text-center mb-10">
-            <h2 class="font-display text-5xl">
-                Cities We Serve
-            </h2>
-            <p class="text-muted mt-3">
-                Travel comfortably across Maharashtra and India.
-            </p>
+          <h2 class="font-display text-5xl">Cities We Serve</h2>
+          <p class="text-muted mt-3">
+            Travel comfortably across Maharashtra and India.
+          </p>
         </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {#each cities as city}
-        <div class="relative overflow-hidden rounded-3xl shadow-lg group">
-            <img
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {#each cities as city}
+            <div class="relative overflow-hidden rounded-3xl shadow-lg group">
+              <img
                 src={city.image}
                 alt={city.name}
                 class="h-72 w-full object-cover transition duration-500 group-hover:scale-110"
-            />
+              />
 
-            <div class="absolute inset-0 bg-gradient-to-t from-white/70 via-black/20 to-transparent"></div>
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-white/70 via-black/20 to-transparent"
+              ></div>
 
-            <h3 class="absolute bottom-5 left-0 right-0 text-center text-white text-3xl font-display font-bold tracking-wide">
+              <h3
+                class="absolute bottom-5 left-0 right-0 text-center text-white text-3xl font-display font-bold tracking-wide"
+              >
                 {city.name}
-            </h3>
+              </h3>
+            </div>
+          {/each}
         </div>
-    {/each}
-</div>
-          <!-- <h3 class="text-xl font-display">All-India service examples</h3> -->
-          <!-- <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-4.5">
+        <!-- <h3 class="text-xl font-display">All-India service examples</h3> -->
+        <!-- <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-4.5">
             {#each cities as r}
               <span
                 class="bg-[#f2f8f5] border border-line rounded-xl p-3 font-extrabold text-[#36595d]"
@@ -745,8 +748,9 @@ const cities = [
               >
             {/each}
           </div> -->
-        </article>
-</section>
+      </div>
+    </article>
+  </section>
   <!-- Services -->
   <section id="services" class="py-16 md:py-24">
     <div class="w-[min(1180px,calc(100%-40px))] mx-auto">
@@ -828,40 +832,74 @@ const cities = [
       >
         {#each visibleCars as car}
           <article
-            class="bg-white rounded-3xl overflow-hidden border border-line shadow-[0_8px_24px_rgba(8,31,42,.05)] transition duration-300 hover:-translate-y-1.5 hover:shadow-brand"
+            class="group overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
           >
+            <!-- Image -->
             <div
-              class="h-[230px] bg-gradient-to-br from-[#153f4c] to-[#0c766e] grid place-items-center text-white text-8xl relative"
+              class="relative h-64 overflow-hidden "
             >
+              <!-- Badge -->
               <span
-                class="absolute top-4 left-4 bg-white text-gray-600 rounded-full px-3 py-2 text-sm font-extrabold"
-                >{car.badge}</span
+                class="absolute top-4 left-4 z-10 rounded-full bg-white/95 px-4 py-2 text-xs font-bold uppercase tracking-wide text-gray-700 shadow"
               >
-              {car.emoji}
+                {car.badge}
+              </span>
+
+              <!-- Car Image -->
+              <div class="flex h-full items-center justify-center p-6">
+                <img
+                  src={car.emoji}
+                  alt={car.title}
+                  class="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+
+              <!-- Gradient Overlay -->
+              <div
+                class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/20 to-transparent"
+              ></div>
             </div>
-            <div class="p-8">
-              <h3 class="text-2xl font-display">{car.title}</h3>
-              <p class="text-muted text-base mt-3">{car.desc}</p>
-              <div class="flex gap-2 flex-wrap my-4">
+
+            <!-- Content -->
+            <div class="p-6">
+              <h3 class="text-2xl font-display font-bold text-slate-900">
+                {car.title}
+              </h3>
+
+              <p class="mt-3 text-sm leading-6 text-slate-600">
+                {car.desc}
+              </p>
+
+              <!-- Features -->
+              <div class="mt-5 flex flex-wrap gap-2">
                 {#each car.meta as m}
                   <span
-                    class="bg-[#f0f6f3] text-[#4d6c6d] rounded-lg px-3 py-2 text-sm font-bold"
-                    >{m}</span
+                    class="rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700"
                   >
+                    {m}
+                  </span>
                 {/each}
               </div>
+
+              <!-- Footer -->
               <div
-                class="border-t border-line pt-5 mt-5 flex justify-between items-end"
+                class="mt-6 flex items-end justify-between border-t border-slate-200 pt-5"
               >
                 <div>
-                  <small class="block text-muted text-xs"
-                    >{car.priceLabel}</small
-                  >
-                  <strong class="font-display text-3xl">{car.price}</strong>
+                  <p class="text-xs uppercase tracking-wide text-slate-500">
+                    {car.priceLabel}
+                  </p>
+                  <p class="mt-1 text-3xl font-bold text-[#153f4c]">
+                    {car.price}
+                  </p>
                 </div>
-                <a href="#quote" class="font-extrabold text-teal text-lg"
-                  >Book →</a
+
+                <a
+                  href="#quote"
+                  class="rounded-full bg-[#f0643b] px-5 py-3 font-semibold text-white transition-all duration-300 hover:bg-[#e3552c] hover:shadow-lg"
                 >
+                  Book Now →
+                </a>
               </div>
             </div>
           </article>
@@ -889,9 +927,9 @@ const cities = [
           </h2>
         </div>
         <p class="max-w-[500px] text-black">
-           Cars are available from Pune for verified customers. Submit
-          your route and dates so our team can confirm vehicle availability,
-          documents and the best fare.
+          Cars are available from Pune for verified customers. Submit your route
+          and dates so our team can confirm vehicle availability, documents and
+          the best fare.
         </p>
       </div>
       <div
@@ -1019,8 +1057,8 @@ const cities = [
                 >Send booking request →</button
               >
               <div class="text-xs text-muted text-center">
-                For faster booking, call 72182 83271 / +91 9146634563 or WhatsApp
-                your route details.
+                For faster booking, call 72182 83271 / +91 9146634563 or
+                WhatsApp your route details.
               </div>
             </div>
           {:else}
@@ -1065,35 +1103,35 @@ const cities = [
           multi-city and long-duration rental plans depending on availability.
         </p>
       </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-  {#each routeGroups as group}
-    <article
-      class="bg-white rounded-3xl p-6 border border-line shadow-sm hover:shadow-lg transition-all duration-300"
-    >
-      <div class="flex items-center gap-2 mb-5">
-        <div
-          class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center text-lg"
-        >
-          📍
-        </div>
-
-        <h3 class="text-xl font-display font-bold text-[#1f3c40]">
-          {group.state}
-        </h3>
-      </div>
-
-      <div class="flex flex-wrap gap-2">
-        {#each group.routes as route}
-          <span
-            class="px-4 py-2 rounded-full bg-[#f2f8f5] border border-line text-[#36595d] font-semibold text-sm hover:bg-green-500 hover:text-white transition-colors cursor-default"
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {#each routeGroups as group}
+          <article
+            class="bg-white rounded-3xl p-6 border border-line shadow-sm hover:shadow-lg transition-all duration-300"
           >
-            {route}
-          </span>
+            <div class="flex items-center gap-2 mb-5">
+              <div
+                class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center text-lg"
+              >
+                📍
+              </div>
+
+              <h3 class="text-xl font-display font-bold text-[#1f3c40]">
+                {group.state}
+              </h3>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              {#each group.routes as route}
+                <span
+                  class="px-4 py-2 rounded-full bg-[#f2f8f5] border border-line text-[#36595d] font-semibold text-sm hover:bg-green-500 hover:text-white transition-colors cursor-default"
+                >
+                  {route}
+                </span>
+              {/each}
+            </div>
+          </article>
         {/each}
       </div>
-    </article>
-  {/each}
-</div> 
     </div>
   </section>
 
@@ -1120,15 +1158,17 @@ const cities = [
           process visible: vehicle availability, fare, documents and handover.
         </p>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 ">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {#each steps as step}
-          <article class="bg-cream border border-line rounded-[22px] p-6 hover:bg-teal-50 transition duration-200 group-hover:scale-510 shadow-lg">
+          <article
+            class="bg-cream border border-line rounded-[22px] p-6 hover:bg-teal-50 transition duration-200 group-hover:scale-510 shadow-lg"
+          >
             <div
               class="w-[42px] h-[42px] rounded-full bg-ink text-black grid place-items-center font-extrabold mb-4.5"
             >
               {step.n}
             </div>
-            <h3 class="text-xl text-teal font-display ">{step.title}</h3>
+            <h3 class="text-xl text-teal font-display">{step.title}</h3>
             <p class="text-muted text-sm mt-2">{step.text}</p>
           </article>
         {/each}
@@ -1151,7 +1191,7 @@ const cities = [
   </section>
 
   <!-- Why -->
-  <section id="why" class="py-16 md:py-24 ">
+  <section id="why" class="py-16 md:py-24">
     <div
       class="w-[min(1180px,calc(100%-40px))] mx-auto grid grid-cols-1 lg:grid-cols-[.9fr_1.1fr] gap-10 lg:gap-[70px] items-center"
     >
@@ -1173,8 +1213,7 @@ const cities = [
         </div>
         <p class="relative text-white/70 mt-3">
           No confusing package pricing. We focus on car rental needs: vehicle,
-          route, dates, driver choice and final fare before
-          confirmation.
+          route, dates, driver choice and final fare before confirmation.
         </p>
         <p class="relative text-white/70 mt-4">
           <span class="text-[#ffc65b] tracking-wide">★★★★★</span><br />Built for
@@ -1192,21 +1231,26 @@ const cities = [
         >
           Practical rental support, not just a booking form.
         </h2>
-        <div class="grid gap-6 mt-8 p-5 bg-gray-200 border rounded-3xl">
-          {#each whyItems as item}
-            <div class="grid grid-cols-[48px_1fr] gap-4">
-              <div
-                class="w-12 h-12 rounded-2xl bg-mint grid place-items-center text-xl"
-              >
-                {item.icon}
-              </div>
-              <div>
-                <h3 class="text-xl font-display">{item.title}</h3>
-                <p class="mt-1.5 text-muted text-sm">{item.text}</p>
-              </div>
-            </div>
-          {/each}
+     
+       <div class="grid gap-6 mt-8 p-5 bg-gray-200 border rounded-3xl">
+  {#each whyItems as item}
+    <div class="grid grid-cols-[56px_1fr] gap-4 items-start">
+      <div
+        class="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-teal-600"
+      >
+        <div
+          class="w-7 h-7 [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current">
+          {@html item.icon}
         </div>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-display">{item.title}</h3>
+        <p class="mt-2 text-muted text-sm leading-6">{item.text}</p>
+      </div>
+    </div>
+  {/each}
+</div>
       </div>
     </div>
   </section>
@@ -1228,7 +1272,7 @@ const cities = [
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4.5">
         {#each reviews as r}
-          <article class="bg-white border border-line rounded-[22px] p-6 m-6 ">
+          <article class="bg-white border border-line rounded-[22px] p-6 m-6">
             <span class="text-[#ffc65b] tracking-wide">★★★★★</span>
             <p class="text-[#38565a] mt-2">{r.text}</p>
             <div class="flex gap-3 items-center mt-5">
@@ -1301,8 +1345,8 @@ const cities = [
           Shree Ram Travels
         </a>
         <p class="text-white/60 max-w-[340px] mt-4">
-          Car rentals services based in Pune, Maharashtra,
-          serving routes across India.
+          Car rentals services based in Pune, Maharashtra, serving routes across
+          India.
         </p>
         <p class="text-sm text-white/60 mt-2">Office: Pune, Maharashtra</p>
       </div>
@@ -1362,8 +1406,7 @@ const cities = [
     >
       <span>© 2026 Shree Ram Travels, Pune.</span>
       <span
-        >Clean cars · Chauffeur-driven rentals · All-India outstation
-        service</span
+        >Clean cars · Chauffeur-driven rentals · All-India outstation service</span
       >
     </div>
   </div>
@@ -1380,14 +1423,15 @@ const cities = [
   ☎
 </a> -->
 <div class="fixed right-5 bottom-5 z-50 flex flex-col items-end gap-3">
-
   {#if fabOpen}
     <!-- Call Button -->
     <a
       href={`tel:${phoneNumber}`}
       class="flex items-center gap-3 bg-white rounded-full px-4 py-3 shadow-xl hover:scale-105 transition-all"
     >
-      <span class="grid place-items-center w-11 h-11 rounded-full bg-blue-600 text-white text-xl">
+      <span
+        class="grid place-items-center w-11 h-11 rounded-full bg-blue-600 text-white text-xl"
+      >
         📞
       </span>
       <span class="font-semibold text-gray-700">Call Us</span>
@@ -1400,7 +1444,9 @@ const cities = [
       rel="noopener"
       class="flex items-center gap-3 bg-white rounded-full px-4 py-3 shadow-xl hover:scale-105 transition-all"
     >
-      <span class="grid place-items-center w-11 h-11 rounded-full bg-[#25D366] text-white text-xl">
+      <span
+        class="grid place-items-center w-11 h-11 rounded-full bg-[#25D366] text-white text-xl"
+      >
         💬
       </span>
       <span class="font-semibold text-gray-700">WhatsApp</span>
@@ -1419,5 +1465,4 @@ const cities = [
       ☎
     {/if}
   </button>
-
 </div>
