@@ -435,8 +435,73 @@ ${quoteRoute}
 
   const waLink1 =
     "https://wa.me/7218283271?text=Hello%20Shree%20Ram%20Travels%2C%20I%20need%20a%20car%20rental%20quote.";
-</script>
 
+
+
+    const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "CarRental",
+    "name": "Shree Ram Travels",
+    "image": "https://www.shreeramtravels.com/imagess.png",
+    "telephone": ["+917218283271", "+919146634563"],
+    "email": "contact@shreramtravel.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Pune",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    },
+    "areaServed": ["Pune", "Mumbai", "Maharashtra", "India"],
+    "priceRange": "₹₹",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": String(reviews.length)
+    }
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  };
+</script>
+<svelte:head>
+  <title>Car Rental in Pune | Cabs with Driver, Airport Transfer & Outstation | Shree Ram Travels</title>
+  <meta name="description" content="Book chauffeur-driven car rentals from Pune for airport transfers, outstation trips (Mumbai, Goa, Shirdi, Mahabaleshwar) and monthly corporate rentals. Transparent fare, 24x7 support." />
+  <link rel="canonical" href="https://www.shreeramtravels.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Car Rental in Pune | Shree Ram Travels" />
+  <meta property="og:description" content="Chauffeur-driven cars from Pune for local, airport and all-India outstation travel. Clear fares, 24x7 support." />
+  <meta property="og:url" content="https://www.shreeramtravels.com/" />
+  <meta property="og:image" content="https://www.shreeramtravels.com/imagess.png" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Car Rental in Pune | Shree Ram Travels" />
+  <meta name="twitter:description" content="Chauffeur-driven cars from Pune for local, airport and all-India outstation travel." />
+  <meta name="twitter:image" content="https://www.shreeramtravels.com/imagess.png" />
+
+  <!-- Local SEO -->
+  <meta name="geo.region" content="IN-MH" />
+  <meta name="geo.placename" content="Pune" />
+
+    {@html `<script type="application/ld+json">${JSON.stringify(localBusinessSchema)}</script>`}
+  {@html `<script type="application/ld+json">${JSON.stringify(faqSchema)}</script>`}
+</svelte:head>
 <main class="font-sans text-ink bg-cream">
   <!-- Topbar -->
   <div class="bg-[#eef7f3] text-black text-sm py-2">
@@ -724,7 +789,7 @@ ${quoteRoute}
               <img
                 src={city.image}
                 alt={city.name}
-                class="h-72 w-full object-cover transition duration-500 group-hover:scale-110"
+                class='h-72 w-full object-cover transition duration-500 group-hover:scale-110 loading="lazy"'
               />
 
               <div
