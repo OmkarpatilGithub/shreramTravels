@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href='/srt.png' />
+	<link rel="icon" href='/srtH.jpeg' />
 </svelte:head>
 
 {@render children()}
