@@ -444,7 +444,7 @@ ${quoteRoute}
     "@context": "https://schema.org",
     "@type": "CarRental",
     name: "Shri Ram Travels",
-    image: "https://www.Shriramtravels.com/imagess.png",
+    image: "https://shreramtravel.com//imagess.png",
     telephone: ["+917218283271", "+919146634563"],
     email: "contact@shreramtravel.com",
     address: {
@@ -1654,7 +1654,7 @@ ${quoteRoute}
   <!-- Main Floating Button -->
   <button
     on:click={() => (fabOpen = !fabOpen)}
-    class="w-16 h-16 rounded-full bg-primary text-white shadow-2xl text-3xl hover:scale-110 transition-all"
+    class="w-16 h-16 rounded-full bg-green-400 text-white shadow-2xl text-3xl hover:scale-110 transition-all"
     aria-label="Contact Options"
   >
     {#if fabOpen}
